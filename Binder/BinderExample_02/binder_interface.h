@@ -1,0 +1,46 @@
+#include <utils/RefBase.h>
+#include <utils/Log.h>
+#include <binder/TextOutput.h>
+
+#include <binder/IInterface.h>
+#include <binder/IBinder.h>
+#include <binder/ProcessState.h>
+#include <binder/IServiceManager.h>
+#include <binder/IPCThreadState.h>
+#include <iostream>
+
+using namespace android;
+
+// Interface class
+class ICalculator : public IInterface
+{
+public:
+    enum
+    {
+        ADD = IBinder::FIRST_CALL_TRANSACTION,
+        SUB,
+        MUL,
+        DIV,
+        MOD
+    };
+
+    // Requests the service to perform an addition and return the result
+    virtual int32_t add(int32_t val1, int32_t val2) = 0;
+    // Requests the service to perform subtraction and return the result
+    virtual int32_t sub(int32_t val1, int32_t val2) = 0;
+    // Requests the service to perform multiplication and return the result
+    virtual int32_t mul(int32_t val1, int32_t val2) = 0;
+    // Requests the service to perform division and return the result
+    virtual int32_t div(int32_t val1, int32_t val2) = 0;
+    // Requests the service to perform modulo and return the result
+    virtual int32_t mod(int32_t val1, int32_t val2) = 0;
+
+    DECLARE_META_INTERFACE(Calculator);
+    // The above line expands as follows
+    // static const android::String16 descriptor;
+    // static android::sp<ICalculator> asInterface(const android::sp<android::IBinder>& obj);
+    // virtual const android::String16& getInterfaceDescriptor() const;
+    // ICalculator();
+    // virtual ~ICalculator();
+};
+
