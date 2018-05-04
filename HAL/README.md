@@ -13,4 +13,5 @@ Run the application with the following command
 Output should be as below for successful execution
 ==================================================
 HAL return value = 0
+It's a call to the HAL library function get_number_of_cameras
 Number of cameras = 2
