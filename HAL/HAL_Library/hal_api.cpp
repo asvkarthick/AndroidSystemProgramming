@@ -6,6 +6,7 @@
 
 int get_number_of_cameras()
 {
+    std::cout << "It's a call to the HAL library " << __func__ << std::endl;
     return NUM_CAMERAS;
 }
 
