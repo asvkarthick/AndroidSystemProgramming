@@ -88,14 +88,18 @@ int main()
     {
         for(camera_number = 0; camera_number < number_of_cameras; camera_number++)
         {
+            camera_info = new camera_info_t;
+            camera_info_array.push_back(camera_info);
             ret = camera_module->get_camera_info(camera_number, camera_info);
             if(ret != 0)
             {
-                camera_info = new camera_info_t;
-                camera_info_array.push_back(camera_info);
+                std::cout << "Camera info not available for camera " << camera_number << std::endl;
             }
             else
-                std::cout << "Camera info not available for camera " << camera_number << std::endl;
+            {
+                std::cout << "Camera " << camera_number << " facing = " << camera_info->facing << std::endl;
+                std::cout << "Camera " << camera_number << " orientation = " << camera_info->orientation << std::endl;
+            }
         }
     }
     else
